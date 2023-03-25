@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ahkapp-rs
+  labels:
+    app: ahkapp
+    type: front-end
+spec:
+  selector:
+    matchLabels:
+      app: ahkapp
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: ahkapp
+        type: front-end        
+    spec:
+      containers:
+        - name: nginx-contianer
+          image: nginx
+  replicas: 3
